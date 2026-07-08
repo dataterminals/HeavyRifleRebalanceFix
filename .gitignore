@@ -29,3 +29,4 @@ oodle-data-shared.dll
 dist/
 *.7z
 *.zip
+tools/retoc/

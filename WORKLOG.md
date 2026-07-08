@@ -120,9 +120,37 @@ HRF05 stats live in its DataAsset) → rebase the remaining pak assets onto the 
 retoc → fix JSON (Add→Replace on vanilla rows, verify 0x68) → refresh deps → in-game test.
 JSON-only is impossible (TFWWorkbench can't set CurveFloats / DA scalars).
 
-### Next
-- [ ] CHECKPOINT: confirm fix approach + whether to obtain retoc, re-cook, and test in-game.
-- [ ] Get retoc (github.com/trumank/retoc — not on this machine); retoc to-legacy (full game mounted)
-      → drop BP_WPN_HRF05 → to-zen against live build → repack 152 (+191 as-is or rebased).
-- [ ] Rewrite JSON with Replace + field fixes; re-dump DT_CaliberToHeadshotMulti properly.
-- [ ] Build dist/, install, launch build 24097213, verify (see docs/diagnosis.md verification).
+### BUILD — fix built (user chose "build files, I test"; game not launched)
+Tooling: **retoc v0.1.5** (trumank/retoc, sha256-verified) in `tools/retoc/` (gitignored).
+
+**Fix = pak-only, minimal.** Rebuilt `152_HeavyRifleRebalance_P` with the crashing `BP_WPN_HRF05`
+dropped; other 12 override assets rebased onto the current build. `191` mesh pak + TFWWorkbench
+JSON left unchanged.
+
+Method (see `tools/build_fix.sh`, reproducible):
+1. Stage current game (hardlinks) + original mod renamed `zzz_` so it WINS the FPackageId collision.
+2. `retoc to-legacy` the 12 keepers (mod version wins; imports resolve vs current base).
+   - Gotcha: mod-won extracts land at BARE paths → **repath to real /Game paths** before to-zen
+     (retoc derives FPackageId from file path). `to-legacy` preserves montage imports in the .uasset.
+3. `retoc to-zen --version UE5_4` → new 152 (12 packages, no BP).
+
+**Verified without launching:**
+- `retoc verify` → verified. 12 kept chunk FPackageIds **byte-identical** to original; only removed
+  id = `BP_WPN_HRF05` (`e1441b0413b25fd5`).
+- Decoded in full game mount: damages HRF01 730 / HRF02 28000 / HRF03 2300 / HRF04 3800 /
+  HRF05 36300 / RFL29 375; `FC_*_Damage` curves identical; montages/textures resolve.
+- With fix mounted, `BP_WPN_HRF05` resolves to **current base** BP (has FRS hack + HK_Governor) →
+  crash source eliminated.
+
+Gotchas learned (documented): `to-zen` in isolation NULLS external refs → always verify decode in a
+FULL mount (isolated-mount nulls are artifacts, not data loss). Scope-lens loss on `PICSCP4/7` is a
+**TFWWorkbench framework** limitation (`ItemDetailsData:AddRow` hardcodes `ExtraMeshs={}`, and
+`Replace` routes through it) — NOT fixable in mod JSON; cosmetic; documented.
+
+**Delivered:** `dist/HeavyRifleRebalanceFix_Loosefiles/` (fixed 152 + original 191 + JSON + readme).
+`docs/fix-notes.md` = what changed + install + test checklist + caveats.
+
+### Next (user)
+- [ ] Install dist loose files + current deps; launch build 24097213; run docs/fix-notes.md checklist.
+- [ ] Report back if any residual crash (would mean another pak asset needs the same treatment).
+- [ ] (optional) confirm original-author permission before any public redistribution.
