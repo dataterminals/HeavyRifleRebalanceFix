@@ -97,8 +97,32 @@ isolated `global + mod` mount to read the mod's own assets collision-free).
 - `dump/dt/` — current game `WeaponsDetailsData`, `WeaponPartStatsData`, `ItemDetailsData`,
   `DT_ManufactoringRecipies`, `DT_ManufactoringGroups`.
 
+### DIAGNOSIS (parallel workflow `hrr-diagnose`, 4 finders + synthesis) — see docs/diagnosis.md
+**Root cause (confirmed):** the mod's cooked `BP_WPN_HRF05` blueprint throws
+`ObjectSerializationError` on 0.9.3.9.2 → crash. Two July 2026 Nexus reports name exactly this
+asset after "today's update"; worked on early 0.9.3 (Mar). Our structural check confirms: the mod's
+`BP_WPN_HRF05` (307 KB) is a **stale subset** of the current base (327 KB) — base has the new
+"ADS FRS Hack for RFL05", HRF05 camera-shakes, and a `BP_HK_Governor` ref (July HK rework); the mod
+adds nothing base lacks. A 0.9.2-cooked BP whose base changed under it can't deserialize.
+
+**Paks DO override correctly** — bare paths were a red herring. FPackageId 13/13 of the 152 pak's
+chunks match base `/Game/...` path hashes (0/13 match bare). Rebalance numbers are live. IoStore
+compat otherwise fine (same UE 5.4.2, TOC v6); only import/export-hash drift bites, and that's
+exactly what hit the blueprint.
+
+**JSON side:** mostly benign (Add overwrites now-vanilla rows but with matching defaults). One real
+regression: re-Add of `PICSCP4/7` drops their lens mesh (`ItemDetailsData.lua:91-92`) → use
+`Replace`. Version-risk: hardcoded `RecipyCraftTime` offset `0x68` may be stale. Deps frozen at
+Jan 2026 (no 0.9.3.x tag).
+
+**Recommended fix = Option C (hybrid):** drop the mod's `BP_WPN_HRF05` (crash source, stale subset;
+HRF05 stats live in its DataAsset) → rebase the remaining pak assets onto the current build with
+retoc → fix JSON (Add→Replace on vanilla rows, verify 0x68) → refresh deps → in-game test.
+JSON-only is impossible (TFWWorkbench can't set CurveFloats / DA scalars).
+
 ### Next
-- [ ] Workflow: community/Nexus research (what "broken" means; TFWWorkbench current version)
-      + rebalance content diff + framework schema-fit + IoStore override verdict → root cause.
-- [ ] Decide fix strategy (re-cook paks via retoc vs. push rebalance fully into JSON vs. hybrid).
-- [ ] Build + empirically verify on build 24097213.
+- [ ] CHECKPOINT: confirm fix approach + whether to obtain retoc, re-cook, and test in-game.
+- [ ] Get retoc (github.com/trumank/retoc — not on this machine); retoc to-legacy (full game mounted)
+      → drop BP_WPN_HRF05 → to-zen against live build → repack 152 (+191 as-is or rebased).
+- [ ] Rewrite JSON with Replace + field fixes; re-dump DT_CaliberToHeadshotMulti properly.
+- [ ] Build dist/, install, launch build 24097213, verify (see docs/diagnosis.md verification).
