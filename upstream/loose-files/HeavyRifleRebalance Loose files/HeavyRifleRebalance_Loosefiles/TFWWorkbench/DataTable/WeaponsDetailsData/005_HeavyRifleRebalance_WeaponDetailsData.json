@@ -1,0 +1,280 @@
+[
+    {
+        "Action": "Add",
+        "Name": "RFL29",
+        "Data": {
+            "ExtraTooltip": "(RFL) - Ammo = 12.7 Subsonic",
+            "DataAsset": "/Game/FW/Weapons/Weapon_V2/RFL_Rifles/RFL29/DA_WPN_RFL29_v2.DA_WPN_RFL29_v2",
+            "ValueRowName": "WPN_RFL29",
+            "DanglyClass": "/Game/FW/Weapons/Weapon_V2/RFL_Rifles/RFL29/BP_WPN_RFL29.BP_WPN_RFL29_C",
+            "LevelPartUnlockTable": "/Game/FW/Weapons/Weapon_V2/RFL_Rifles/RFL29/DT_RFL29_WeaponPartUnlocks.DT_RFL29_WeaponPartUnlocks",
+            "MustBeLoose": false,
+            "DanglyDescription": "Suppressed special operations rifle. Uses subsonic ammunition.",
+            "DanglyName": "VKS Vykhlop",
+            "CanBeLoose": false,
+            "Icon": "/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_RFL29.T_RFL29",
+            "HUDIcon": "/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HUDRFL29.T_HUDRFL29",
+            "DanglyTypeTag": {
+                "GameplayTags": [
+                    {
+                        "TagName": "Item.Weapon"
+                    },
+                    {
+                        "TagName": "Item.WeaponAndParts"
+                    },
+                    {
+                        "TagName": "Item.Rifle"
+                    }
+                ],
+                "ParentTags": [
+                    {
+                        "TagName": "Item"
+                    }
+                ]
+            },
+            "RequiredGameplayTags": {
+                "GameplayTags": [
+                    {
+                        "TagName": "PlayerSkill.Global.RFL.AllowUse"
+                    }
+                ],
+                "ParentTags": [
+                    {
+                        "TagName": "PlayerSkill.Global.RFL"
+                    },
+                    {
+                        "TagName": "PlayerSkill.Global"
+                    },
+                    {
+                        "TagName": "PlayerSkill"
+                    }
+                ]
+            },
+            "AllowTags": {
+                "GameplayTags": [
+                    {
+                        "TagName": "Pawn.Player.Shaman"
+                    },
+                    {
+                        "TagName": "Pawn.Player.MaskMan"
+                    },
+                    {
+                        "TagName": "Pawn.Player.Gunhead"
+                    },
+                    {
+                        "TagName": "Pawn.Player.Girl"
+                    },
+                    {
+                        "TagName": "Pawn.Player.BagMan"
+                    },
+                    {
+                        "TagName": "Pawn.Player.OldMan"
+                    }
+                ],
+                "ParentTags": [
+                    {
+                        "TagName": "Pawn.Player"
+                    },
+                    {
+                        "TagName": "Pawn"
+                    }
+                ]
+            },
+            "TacCamHighlight": "Default",
+            "LevelScopeTag": {
+                "TagName": "Scope.Weapon.RFL29"
+            },
+            "AttachRelativeToRig": false,
+            "ValueRow": {
+                "RowName": "Value_V2_WPN_RFL29",
+                "DataTable": "/Game/Blueprints/Data/Value/ValueV2_WEAPONS.ValueV2_WEAPONS"
+            },
+            "Weight": 7
+        }
+	},
+	    {
+        "Action": "Add",
+        "Name": "HRF01",
+        "Data": {
+			"RequiredGameplayTags":{"GameplayTags":[{"TagName":"PlayerSkill.Global.HRF.AllowUse"}],
+				"ParentTags":[{"TagName":"PlayerSkill.Global.HRF"},
+				{"TagName":"PlayerSkill.Global"},
+				{"TagName":"PlayerSkill"}]},
+			"MustBeLoose":false,
+			"Icon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HRF01.T_HRF01",
+			"CanBeLoose":false,
+			"AttachRelativeToRig":false,
+			"ExtraTooltip":"(HRF) Ammo = .50 Cal",
+			"Weight":3.289999961853,
+			"DanglyTypeTag":{"GameplayTags":[{"TagName":"Item.Weapon"},
+				{"TagName":"Item.WeaponAndParts"},
+				{"TagName":"Item.Rifle"},
+				{"TagName":"Item.HRF"}],
+			"ParentTags":[{"TagName":"Item"}]},
+			"DanglyDescription":"Intermediate heavy rifle chambered in .50 Beowulf",
+			"ValueRowName":"WPN_HRF01",
+			"LevelPartUnlockTable":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF01/DT_HRF_WeaponPartUnlocks.DT_HRF_WeaponPartUnlocks",
+			"DanglyClass":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF01/BP_WPN_HRF01.BP_WPN_HRF01_C",
+			"LevelScopeTag":{"TagName":"Scope.Weapon.HRF01"},
+			"TacCamHighlight":"Default",
+			"DataAsset":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF01/DA_WPN_HRF01_v2.DA_WPN_HRF01_v2",
+			"DanglyName":"SCAR",
+			"HUDIcon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HUDHRF01.T_HUDHRF01",
+			"AllowTags":{"GameplayTags":[{"TagName":"Pawn.Player.Gunhead"},
+				{"TagName":"Pawn.Player.OldMan"},
+				{"TagName":"Pawn.Player.BagMan"}],
+			"ParentTags":[{"TagName":"Pawn.Player"},
+				{"TagName":"Pawn"}]},
+			"ValueRow":{"RowName":"Value_V2_WPN_HRF01",
+			"DataTable":"/Game/Blueprints/Data/Value/ValueV2_WEAPONS.ValueV2_WEAPONS"}
+        }
+	},
+	{
+        "Action": "Add",
+        "Name": "HRF02",
+        "Data": {
+			"RequiredGameplayTags":{"GameplayTags":[{"TagName":"PlayerSkill.Global.HRF.AllowUse"}],
+			"ParentTags":[{"TagName":"PlayerSkill.Global.HRF"},
+				{"TagName":"PlayerSkill.Global"},
+				{"TagName":"PlayerSkill"}]},
+			"MustBeLoose":false,
+			"Icon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HRF02.T_HRF02",
+			"CanBeLoose":false,
+			"AttachRelativeToRig":false,
+			"ExtraTooltip":"(HRF) Ammo = 20mm",
+			"Weight":54.700000762939,
+			"DanglyTypeTag":{"GameplayTags":[{"TagName":"Item.WeaponAndParts"},
+				{"TagName":"Item.Weapon"},
+				{"TagName":"Item.Rifle"},
+				{"TagName":"Item.HRF"}],
+			"ParentTags":[{"TagName":"Item"}]},
+			"DanglyDescription":"Heavy anti-vehicle rifle chambered in 20mm AP",
+			"ValueRowName":"WPN_HRF02",
+			"LevelPartUnlockTable":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF02/DT_HRF02_WeaponPartUnlocks.DT_HRF02_WeaponPartUnlocks",
+			"DanglyClass":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF02/BP_WPN_HRF02.BP_WPN_HRF02_C",
+			"LevelScopeTag":{"TagName":"Scope.Weapon.HRF02"},
+			"TacCamHighlight":"Default",
+			"DataAsset":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF02/DA_WPN_HRF02_v2.DA_WPN_HRF02_v2",
+			"DanglyName":"36M AntiTank",
+			"HUDIcon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HUDHRF02.T_HUDHRF02",
+			"AllowTags":{"GameplayTags":[{"TagName":"Pawn.Player.Gunhead"},
+				{"TagName":"Pawn.Player.OldMan"},
+				{"TagName":"Pawn.Player.BagMan"}],
+			"ParentTags":[{"TagName":"Pawn.Player"},
+				{"TagName":"Pawn"}]},
+			"ValueRow":{"RowName":"Value_V2_WPN_HRF02",
+			"DataTable":"/Game/Blueprints/Data/Value/ValueV2_WEAPONS.ValueV2_WEAPONS"}
+        }
+	},
+	{
+        "Action": "Add",
+        "Name": "HRF03",
+        "Data": {
+			"RequiredGameplayTags":{"GameplayTags":[{"TagName":"PlayerSkill.Global.HRF.AllowUse"}],
+			"ParentTags":[{"TagName":"PlayerSkill.Global.HRF"},
+				{"TagName":"PlayerSkill.Global"},
+				{"TagName":"PlayerSkill"}]},
+			"MustBeLoose":false,
+			"Icon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HRF03.T_HRF03",
+			"CanBeLoose":false,
+			"AttachRelativeToRig":false,
+			"ExtraTooltip":"(HRF) Ammo = .50 Cal",
+			"Weight":34,
+			"DanglyTypeTag":{"GameplayTags":[{"TagName":"Item.Weapon"},
+				{"TagName":"Item.WeaponAndParts"},
+				{"TagName":"Item.Rifle"},
+				{"TagName":"Item.HRF"}],
+			"ParentTags":[{"TagName":"Item"}]},
+			"DanglyDescription":"Suppressed heavy rifle chambered in .50BMG. Reduced bullet velocity.",
+			"ValueRowName":"WPN_HRF03",
+			"LevelPartUnlockTable":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF03/DT_HRF03_WeaponPartUnlocks.DT_HRF03_WeaponPartUnlocks",
+			"DanglyClass":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF03/BP_WPN_HRF03.BP_WPN_HRF03_C",
+			"LevelScopeTag":{"TagName":"Scope.Weapon.HRF03"},
+			"TacCamHighlight":"Default",
+			"DataAsset":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF03/DA_WPN_HRF03_v2.DA_WPN_HRF03_v2",
+			"DanglyName":"NTW-20",
+			"HUDIcon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HUDHRF03.T_HUDHRF03",
+			"AllowTags":{"GameplayTags":[{"TagName":"Pawn.Player.Gunhead"},
+				{"TagName":"Pawn.Player.OldMan"},
+				{"TagName":"Pawn.Player.BagMan"}],
+			"ParentTags":[{"TagName":"Pawn.Player"},
+				{"TagName":"Pawn"}]},
+			"ValueRow":{"RowName":"Value_V2_WPN_HRF03",
+			"DataTable":"/Game/Blueprints/Data/Value/ValueV2_WEAPONS.ValueV2_WEAPONS"}
+        }
+	},
+	{
+        "Action": "Add",
+        "Name": "HRF04",
+        "Data": {
+			"RequiredGameplayTags":{"GameplayTags":[{"TagName":"PlayerSkill.Global.HRF.AllowUse"}],
+			"ParentTags":[{"TagName":"PlayerSkill.Global.HRF"},
+				{"TagName":"PlayerSkill.Global"},
+				{"TagName":"PlayerSkill"}]},
+			"MustBeLoose":false,
+			"Icon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HRF04.T_HRF04",
+			"CanBeLoose":false,
+			"AttachRelativeToRig":false,
+			"ExtraTooltip":"(HRF) Ammo = .50 Cal",
+			"Weight":10.5,
+			"DanglyTypeTag":{"GameplayTags":[{"TagName":"Item.Weapon"},
+				{"TagName":"Item.WeaponAndParts"},
+				{"TagName":"Item.Rifle"},
+				{"TagName":"Item.HRF"}],
+			"ParentTags":[{"TagName":"Item"}]},
+			"DanglyDescription":"Modern heavy rifle chambered in .50BMG with wide range of customization options.",
+			"ValueRowName":"WPN_HRF04",
+			"LevelPartUnlockTable":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF04/DT_HRF04_WeaponPartUnlocks.DT_HRF04_WeaponPartUnlocks",
+			"DanglyClass":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF04/BP_WPN_HRF04.BP_WPN_HRF04_C",
+			"LevelScopeTag":{"TagName":"Scope.Weapon.HRF04"},
+			"TacCamHighlight":"Default",
+			"DataAsset":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF04/DA_WPN_HRF04_v2.DA_WPN_HRF04_v2",
+			"DanglyName":"GM6",
+			"HUDIcon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HUDHRF04.T_HUDHRF04",
+			"AllowTags":{"GameplayTags":[{"TagName":"Pawn.Player.Gunhead"},
+				{"TagName":"Pawn.Player.OldMan"},
+				{"TagName":"Pawn.Player.BagMan"}],
+			"ParentTags":[{"TagName":"Pawn.Player"},
+				{"TagName":"Pawn"}]},
+			"ValueRow":{"RowName":"Value_V2_WPN_HRF04",
+			"DataTable":"/Game/Blueprints/Data/Value/ValueV2_WEAPONS.ValueV2_WEAPONS"}
+        }
+	},
+	{
+        "Action": "Add",
+        "Name": "HRF05",
+        "Data": {
+			"RequiredGameplayTags":{"GameplayTags":[{"TagName":"PlayerSkill.Global.HRF.AllowUse"}],
+			"ParentTags":[{"TagName":"PlayerSkill.Global.HRF"},
+				{"TagName":"PlayerSkill.Global"},
+				{"TagName":"PlayerSkill"}]},
+			"MustBeLoose":false,
+			"Icon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HRF05.T_HRF05",
+			"CanBeLoose":false,
+			"AttachRelativeToRig":false,
+			"ExtraTooltip":"(HRF) Ammo = .50PST",
+			"Weight":23.290000915527,
+			"DanglyTypeTag":{"GameplayTags":[{"TagName":"Item.Weapon"},
+				{"TagName":"Item.WeaponAndParts"},
+				{"TagName":"Item.Rifle"},
+				{"TagName":"Item.HRF"}],
+			"ParentTags":[{"TagName":"Item"}]},
+			"DanglyDescription":"Shoulder-fired micro-railgun cobbled together from battlefield salvage and duct-tape",
+			"ValueRowName":"WPN_HRF05",
+			"LevelPartUnlockTable":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF05/DT_HRF05_WeaponPartUnlocks.DT_HRF05_WeaponPartUnlocks",
+			"DanglyClass":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF05/BP_WPN_HRF05.BP_WPN_HRF05_C",
+			"LevelScopeTag":{"TagName":"Scope.Weapon.HRF01"},
+			"TacCamHighlight":"Default",
+			"DataAsset":"/Game/FW/Weapons/Weapon_V2/HRF_HeavyRifles/HRF05/DA_WPN_HRF05_v2.DA_WPN_HRF05_v2",
+			"DanglyName":"AT-43 RAIL",
+			"HUDIcon":"/Game/ArtAssets/UI/Inventory/Textures/WeaponPortraits/WeaponPortraitsBaked/T_HUDHRF05.T_HUDHRF05",
+			"AllowTags":{"GameplayTags":[{"TagName":"Pawn.Player.Gunhead"},
+				{"TagName":"Pawn.Player.OldMan"},
+				{"TagName":"Pawn.Player.BagMan"}],
+			"ParentTags":[{"TagName":"Pawn.Player"},
+				{"TagName":"Pawn"}]},
+			"ValueRow":{"RowName":"Value_V2_WPN_HRF01",
+			"DataTable":"/Game/Blueprints/Data/Value/ValueV2_WEAPONS.ValueV2_WEAPONS"}
+        }
+	}
+]

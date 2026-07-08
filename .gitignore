@@ -1,0 +1,31 @@
+# Build artifacts
+**/bin/
+**/obj/
+tools/**/bin/
+tools/**/obj/
+
+# Decode / staging scratch (never committed)
+decode-out/
+staging/
+work/
+
+# Cooked game/mod binary assets — third-party + game-derived IP; NOT redistributed here.
+# We track the human-readable mod definition (JSON/Lua/ini/txt); not the cooked packs.
+*.pak
+*.ucas
+*.utoc
+*.sig
+*.uasset
+*.uexp
+*.ubulk
+*.usmap
+scriptobjects.bin
+oodle-data-shared.dll
+
+# Third-party binaries (UE4SS, TFWWorkbench dll, signature-bypass dll)
+*.dll
+
+# Built mod output & source archives
+dist/
+*.7z
+*.zip

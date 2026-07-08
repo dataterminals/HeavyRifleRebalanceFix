@@ -1,0 +1,155 @@
+[
+   {
+        "Action": "Add",
+        "Name": "50PST_Ammo2",
+        "Data": {
+			"RecipyName":".50PST Ammo",
+			"RecipyCraftTime":300000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.Item.Ammo.50PST"},
+			"Quantity":8}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Ammo.50PST"},
+			"RequiredTags":{"GameplayTags":[{"TagName":"Quest.HRF05.UnlockManufacture"}],
+			"ParentTags":[{"TagName":"Quest.HRF05"},
+			{"TagName":"Quest"}]},
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.Item.Ammo.50cal"},
+			"Quantity":8},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_101_Thermite"},
+			"Quantity":4},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_55_Multitool"},
+			"Quantity":1}]
+			}
+	},
+	   {
+        "Action": "Add",
+        "Name": "Craft_PICSCP7",
+        "Data": {
+			"RecipyName":"MidnightMight 6x",
+			"RecipyCraftTime":50000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.PICSCP7"},
+			"Quantity":1}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Craft_PICSCP7"},
+            "RequiredTags": {
+                "ParentTags": [],
+                "GameplayTags": []
+            },
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.RareLoot_69_WD40"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_57_CarbonFiberTube"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_120_Camera"},
+			"Quantity":1}]
+			}
+	},
+	   {
+        "Action": "Add",
+        "Name": "Craft_PICSCP4",
+        "Data": {
+			"RecipyName":"Longbomb 8x",
+			"RecipyCraftTime":50000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.PICSCP4"},
+			"Quantity":1}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Craft_PICSCP4"},
+            "RequiredTags": {
+                "ParentTags": [],
+                "GameplayTags": []
+            },
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.RareLoot_65_ESLamp"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_57_CarbonFiberTube"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_120_Camera"},
+			"Quantity":1}]
+			}
+	},
+	   {
+        "Action": "Add",
+        "Name": "Craft_PICSCP2",
+        "Data": {
+			"RecipyName":"Vud 3x",
+			"RecipyCraftTime":50000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.PICSCP2"},
+			"Quantity":1}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Craft_PICSCP2"},
+            "RequiredTags": {
+                "ParentTags": [],
+                "GameplayTags": []
+            },
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.RareLoot_66_Blacklight"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_57_CarbonFiberTube"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_120_Camera"},
+			"Quantity":1}]
+			}
+	},
+	   {
+        "Action": "Add",
+        "Name": "Craft_PICSCP3",
+        "Data": {
+			"RecipyName":"Tex HD 3x",
+			"RecipyCraftTime":50000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.PICSCP3"},
+			"Quantity":1}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Craft_PICSCP3"},
+            "RequiredTags": {
+                "ParentTags": [],
+                "GameplayTags": []
+            },
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.RareLoot_69_WD40"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_57_CarbonFiberTube"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_120_Camera"},
+			"Quantity":1}]
+			}
+	},
+		   {
+        "Action": "Add",
+        "Name": "Craft_PICSCP1",
+        "Data": {
+			"RecipyName":"TJ 3x",
+			"RecipyCraftTime":50000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.PICSCP1"},
+			"Quantity":1}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Craft_PICSCP1"},
+            "RequiredTags": {
+                "ParentTags": [],
+                "GameplayTags": []
+            },
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.RareLoot_63_UVLightBulb"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_57_CarbonFiberTube"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_120_Camera"},
+			"Quantity":1}]
+			}
+	},
+		   {
+        "Action": "Add",
+        "Name": "Craft_PICSCP15",
+        "Data": {
+			"RecipyName":"TrueAimer 4x",
+			"RecipyCraftTime":50000000,
+			"CreatedItems":[{"ItemTag":{"TagName":"Inventory.Item.PICSCP15"},
+			"Quantity":1}],
+			"RecipyGroupTag":{"TagName":"Recipe.Ammo"},
+			"RecipyTag":{"TagName":"Recipe.Craft_PICSCP15"},
+            "RequiredTags": {
+                "ParentTags": [],
+                "GameplayTags": []
+            },
+			"UsedComponents":[{"ItemTag":{"TagName":"Inventory.Item.RareLoot_26_AdvancedProcessor"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_57_CarbonFiberTube"},
+			"Quantity":1},
+			{"ItemTag":{"TagName":"Inventory.Item.RareLoot_24_LCD"},
+			"Quantity":1}]
+			}
+	}
+]
