@@ -1,0 +1,48 @@
+[
+    {
+        "Action": "Add",
+        "Name": "HeavyAmmo",
+        "Data": 
+		{"ManufactoringGroupSubtext":"Craft special ammo types",
+		"ManufactoringDetailsGroupIcon":"/Game/ArtAssets/UI/Inventory/Textures/ItemPortraits/Manufacturing/T_Portrait_Manufacturing_CryoAmmo.T_Portrait_Manufacturing_CryoAmmo",
+		"ManufactoringGroupName":"Special ammo",
+		"FilterTag":{"TagName":"Hub.Upgrade.Category.Crafting.Ammo"},
+		"ManufactoringGroupDetailsText":"Create alternate ammo types",
+		"ManufactoringRecipies":[{"RowName":"DA_CigarettesForCryo545",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"DA_WhiskeyForCryo545",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"50PST_Ammo2",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"50PST_Ammo",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"}
+		],
+		
+		"ManufactoringGroupIcon":"/Game/FW/UI/MainMenu/Textures/Skills/BagMan/T_Icon_Skills_AmmoScrounge.T_Icon_Skills_AmmoScrounge"}
+    },
+	    {
+        "Action": "Add",
+        "Name": "HeavyOptics",
+        "Data": 
+		{"ManufactoringGroupSubtext":"Craft weapon scopes and optics",
+		"ManufactoringDetailsGroupIcon":"/Game/ArtAssets/UI/Inventory/Textures/ItemPortraits/Manufacturing/T_Portrait_Manufacturing_Optics.T_Portrait_Manufacturing_Optics",
+		"ManufactoringGroupName":"Optics",
+		"FilterTag":{"TagName":"Hub.Upgrade.Category.Crafting.Ammo"},
+		"ManufactoringGroupDetailsText":"Manufacture weapon optics",
+		"ManufactoringRecipies":[
+		{"RowName":"Craft_PICSCP7",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"Craft_PICSCP2",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"Craft_PICSCP3",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"Craft_PICSCP1",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"Craft_PICSCP15",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"},
+		{"RowName":"Craft_PICSCP4",
+		"DataTable":"/Game/FW/UI/Manufactoring/Data/DT_ManufactoringRecipies.DT_ManufactoringRecipies"}
+		],
+		"ManufactoringGroupIcon":"/Game/FW/UI/MainMenu/Textures/Skills/BagMan/T_Icon_Skills_LoadManagement.T_Icon_Skills_LoadManagement"}
+    }
+]

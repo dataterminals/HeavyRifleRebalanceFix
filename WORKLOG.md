@@ -1,7 +1,6 @@
 # Heavy Rifle Rebalance — Fix Worklog
 
 Running tally of what we find and do. Newest entries at the bottom of each day.
-Concise by design — enough to hand off, not a novel.
 
 ---
 
@@ -154,3 +153,12 @@ FULL mount (isolated-mount nulls are artifacts, not data loss). Scope-lens loss 
 - [ ] Install dist loose files + current deps; launch build 24097213; run docs/fix-notes.md checklist.
 - [ ] Report back if any residual crash (would mean another pak asset needs the same treatment).
 - [ ] (optional) confirm original-author permission before any public redistribution.
+
+### 2026-07-08 — publish
+- Per user request, the built fix package under `dist/` is now **tracked** (exception to the
+  usual no-cooked-assets policy) so the repo ships the repaired mod directly. `.gitignore` updated
+  with `!dist/**`; scratch (`work/`, `staging*/`, `decode-out/`, `tools/retoc/`) stays ignored.
+- Pushed to `dataterminals/HeavyRifleRebalanceFix`.
+- Note re: "kismet bytecode" question — yes, the mod shipped compiled Blueprint (Kismet) bytecode,
+  but only inside `BP_WPN_HRF05` (13 Function exports incl. ExecuteUbergraph). The fix DROPS that
+  blueprint, so the rebuilt 152 pak now contains ZERO bytecode — only data assets/curves/DT/material.
