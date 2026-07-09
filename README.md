@@ -36,11 +36,36 @@ it no longer works. This repo diagnoses why and ships a fixed build.
 | `upstream/` | Pristine extracted originals (all-in-one + loose files). Reference only; cooked binaries are gitignored. |
 | `docs/` | Diagnosis notes, datamine comparisons. |
 | `tools/` | Repair/build scripts. |
-| `dist/` | Built fixed mod (gitignored). |
+| `dist/` | **Built fixed mod** — tracked; ships the repaired loose-files package (fixed `152` + `191` paks + TFWWorkbench JSON). |
 | `WORKLOG.md` | Running log. |
+
+## Install (players)
+
+Grab [`dist/HeavyRifleRebalanceFix_Loosefiles/`](dist/HeavyRifleRebalanceFix_Loosefiles) and follow
+[`docs/fix-notes.md`](docs/fix-notes.md) (install paths, dependencies, test checklist).
+
+## Rebuilding the pak (dev setup)
+
+The repaired mod is **prebuilt** in `dist/`, so for editing docs/JSON or reading the analysis you
+need nothing extra — a plain clone is enough.
+
+To re-run [`tools/build_fix.sh`](tools/build_fix.sh) (rebuild the `152` pak from scratch — e.g. after
+a future patch re-breaks it), a fresh clone needs three things that are **gitignored** and must be
+re-fetched:
+
+1. **retoc** `v0.1.5` → `tools/retoc/retoc.exe` — download the Windows zip from
+   [trumank/retoc releases](https://github.com/trumank/retoc/releases) and unzip it there.
+2. **The original mod's cooked paks** → restore `upstream/**/152_*` and `191_*`
+   (`.pak/.ucas/.utoc`) from the Nexus [#76](https://www.nexusmods.com/theforeverwinter/mods/76)
+   archives (the vendored *text* is committed; the cooked packs are not). `build_fix.sh` reads them.
+3. **Datamine toolchain** → the `forever-winter-datamine` repo (CUE4Parse decoder +
+   `ForeverWinter-5.4.2.usmap`), plus the game installed, for decode-verification and the AES mount.
+
+Also needs Python 3 (with `py7zr` to unpack the `.7z`s) and the game at the path set in
+`build_fix.sh`.
 
 ## Credit
 
-Original mod by its Nexus author. This repository is a community compatibility fix; the
-original cooked assets are **not** redistributed here. Any rebuilt/redistributed mod is
-subject to the original author's permission.
+Original mod **Heavy Rifle Rebalance** by *Meganiikko* (Nexus #76). This repository is a community
+**compatibility fix** and redistributes a repaired build for players on the current game version.
+Redistribution here is on that basis; it remains subject to the original author's permission.
