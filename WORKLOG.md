@@ -150,8 +150,8 @@ FULL mount (isolated-mount nulls are artifacts, not data loss). Scope-lens loss 
 `docs/fix-notes.md` = what changed + install + test checklist + caveats.
 
 ### Next (user)
-- [ ] Install dist loose files + current deps; launch build 24097213; run docs/fix-notes.md checklist.
-- [ ] Report back if any residual crash (would mean another pak asset needs the same treatment).
+- [x] Install dist loose files + current deps; launch build 24097213; run docs/fix-notes.md checklist. — **done: successful in-game tests on 0.9.3.9.2 (2026-07-08).**
+- [x] Report back if any residual crash (would mean another pak asset needs the same treatment). — **none reported.**
 - [ ] (optional) confirm original-author permission before any public redistribution.
 
 ### 2026-07-08 — publish
@@ -162,3 +162,31 @@ FULL mount (isolated-mount nulls are artifacts, not data loss). Scope-lens loss 
 - Note re: "kismet bytecode" question — yes, the mod shipped compiled Blueprint (Kismet) bytecode,
   but only inside `BP_WPN_HRF05` (13 Function exports incl. ExecuteUbergraph). The fix DROPS that
   blueprint, so the rebuilt 152 pak now contains ZERO bytecode — only data assets/curves/DT/material.
+
+---
+
+## 2026-07-09 — `DT_CaliberToHeadshotMulti` re-dumped (Session-1 TODO closed)
+
+The Session-1 caveat — "`DT_CaliberToHeadshotMulti` dumped empty in isolation → **TODO re-dump**" —
+is resolved. Re-decoded via the `forever-winter-datamine` CUE4Parse decoder in a **full game + mod
+mount** (base `STRUCT_CaliberToHeadshotMulti` present, so rows actually parse this time):
+
+- Base-only mount = vanilla; base + `zzz_`-renamed 152 pak mount = mod wins the FPackageId override.
+- The mod changes **exactly two** of the 20 caliber rows, both `1.5 → 5.0`× headshot multiplier:
+  - `Item.Ammo.127` — 12.7×55 subsonic (VKS **Vykhlop** RFL29)
+  - `Item.Ammo.54R` — 7.62×54R (**SVD**)
+- All 18 other rows are byte-identical to vanilla (e.g. `20mm` 12.0; `50cal`/`.308`/`.357` 3.0; `12g` 0.25).
+
+Matches the original author's "massively increased headshot damage" note for the Vykhlop and SVD.
+It's **caliber-wide**: any weapon firing 12.7-sub or 7.62×54R gets the 5.0× headshot, not just those two guns.
+
+---
+
+## 2026-07-09 — in-game tests green + released on Nexus
+
+- **Successful in-game tests on build 0.9.3.9.2 (24097213)** (tests run 2026-07-08): the fixed
+  loose-files package (fixed `152` + original `191` + TFWWorkbench JSON) with current deps loads
+  clean — no `ObjectSerializationError`, HRF05 runs on the game's own current base blueprint, and the
+  heavy-rifle rebalance numbers apply. The static-analysis diagnosis held up; no residual crash reported.
+- **Published to NexusMods** — [Nexus #123](https://www.nexusmods.com/theforeverwinter/mods/123). Repo status flipped WIP → released (README status line + the diagnosis
+  "still unverified" launch caveat updated to match).

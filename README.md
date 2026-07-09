@@ -4,8 +4,8 @@ A compatibility repair of the community mod **Heavy Rifle Rebalance** for
 *The Forever Winter* (Nexus mod [#76](https://www.nexusmods.com/theforeverwinter/mods/76)),
 so it works again on the current game build.
 
-> **Status:** work in progress. See [`WORKLOG.md`](WORKLOG.md) for the running log of
-> findings and changes.
+> **Status:** released as [**Nexus #123**](https://www.nexusmods.com/theforeverwinter/mods/123), confirmed working in-game on build **0.9.3.9.2** (24097213) via successful
+> community tests. See [`WORKLOG.md`](WORKLOG.md) for the running log of findings and changes.
 
 ## What the mod does
 

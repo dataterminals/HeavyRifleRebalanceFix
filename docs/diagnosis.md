@@ -71,7 +71,7 @@ nulled in every DA (disables upgrade-based scaling):
 
 FC curves (flat): HRF01 780, HRF02 27000, HRF03 2300, HRF04 3800. `DT_CaliberToHeadshotMulti` is
 modified but its rows couldn't be read in isolation (needs the base `STRUCT_CaliberToHeadshotMulti`
-mounted) — **TODO re-dump**. JSON side adds 16 part-stat rows (mags, HRF01 barrels +25/+100 dmg,
+mounted) — **TODO re-dump** — now **resolved (2026-07-09)**: re-dumped in a full game+mod mount (base `STRUCT_CaliberToHeadshotMulti` present, so rows parse). Only two rows change, both `1.5 → 5.0`× headshot — `Item.Ammo.127` (12.7×55 subsonic, VKS Vykhlop) and `Item.Ammo.54R` (7.62×54R, SVD); the other 18 rows match vanilla. JSON side adds 16 part-stat rows (mags, HRF01 barrels +25/+100 dmg,
 6x/8x scopes, suppressor receivers), 4 items (2 VKS mags, 2 scopes), 7 recipes (`.50PST` ammo + 6
 scope crafts), and 2 crafting groups (Special ammo, Optics).
 
@@ -95,10 +95,10 @@ numbers. A pak is unavoidable; keep it minimal.
 
 ## Still unverified (honest caveats)
 
-- Not yet confirmed by launching build 24097213 — rests on community reports + static analysis.
+- **Confirmed working in-game on build 24097213 (0.9.3.9.2)** via successful community tests (2026-07-08) — the earlier static-analysis-only caveat is cleared; no residual crash reported.
 - The exact base-asset delta that broke `BP_WPN_HRF05` wasn't disassembled; a re-cook should rebase
   against the *true live* cook (our datamine filelist may be a hair behind live).
-- `DT_CaliberToHeadshotMulti`'s actual changes are undetermined (dumped empty in isolation).
+- `DT_CaliberToHeadshotMulti` — **resolved 2026-07-09** (re-dumped with the base struct mounted): only `Item.Ammo.127` (12.7 sub / Vykhlop) and `Item.Ammo.54R` (7.62×54R / SVD) change, both `1.5 → 5.0`× headshot; all other rows vanilla.
 - Whether nulling `WeaponPartTunableDataAsset` + flattening FC curves is intentional vs. a re-cook
   side effect (the numbers line up, so likely intentional).
 - Any future hotfix touching these base assets will re-break the pak side — inherent to pak mods.
