@@ -163,6 +163,13 @@ FULL mount (isolated-mount nulls are artifacts, not data loss). Scope-lens loss 
   but only inside `BP_WPN_HRF05` (13 Function exports incl. ExecuteUbergraph). The fix DROPS that
   blueprint, so the rebuilt 152 pak now contains ZERO bytecode — only data assets/curves/DT/material.
 
+> **In plain terms:** This mod ("Heavy Rifle Rebalance") changes how the game's big rifles perform.
+> It started crashing because one leftover file inside it — a gun "blueprint" (a recipe the game
+> follows to build a weapon) — was made for an older version of the game and no longer fit the
+> current one. The fix removes that one broken file (the gun still works fine, using the game's own
+> up-to-date version) and rebuilds the rest to match today's game, so the rebalance works again with
+> no crash.
+
 ---
 
 ## 2026-07-09 — `DT_CaliberToHeadshotMulti` re-dumped (Session-1 TODO closed)
@@ -180,6 +187,11 @@ mount** (base `STRUCT_CaliberToHeadshotMulti` present, so rows actually parse th
 Matches the original author's "massively increased headshot damage" note for the Vykhlop and SVD.
 It's **caliber-wide**: any weapon firing 12.7-sub or 7.62×54R gets the 5.0× headshot, not just those two guns.
 
+> **In plain terms:** We double-checked one more of the mod's changes and confirmed what it does:
+> it makes headshots hit much harder — more than three times as hard — but only for two kinds of
+> ammo (the rounds used by the VKS "Vykhlop" and the SVD rifles). Any gun that fires those rounds
+> gets the boost, not just those two rifles.
+
 ---
 
 ## 2026-07-09 — in-game tests green + released on Nexus
@@ -190,3 +202,102 @@ It's **caliber-wide**: any weapon firing 12.7-sub or 7.62×54R gets the 5.0× he
   heavy-rifle rebalance numbers apply. The static-analysis diagnosis held up; no residual crash reported.
 - **Published to NexusMods** — [Nexus #123](https://www.nexusmods.com/theforeverwinter/mods/123). Repo status flipped WIP → released (README status line + the diagnosis
   "still unverified" launch caveat updated to match).
+
+> **In plain terms:** The repaired mod was actually played on the current version of the game and it
+> worked — no crash, and the rifle changes took effect. It's now published on Nexus (mod #123), so
+> you can download and use it.
+
+---
+
+## 2026-07-10 — Crash report triaged → NOT us (stale third-party `BP_AI_Euruska_MeatMan`)
+
+A community member reported a **startup crash** while running the fix + a "5-second hub upgrades"
+mod, and suspected the fix (the `ObjectSerializationError` *looks* like the old HRF05 break — same
+error class, different asset):
+
+```
+LowLevelFatalError [File:G:\FW-staging\...\AsyncLoading2.cpp] [Line: 1814]
+ObjectSerializationError: /Game/FW/AI/Characters/Euruska/MeatMan/BP_AI_Euruska_MeatMan
+  (0x7551B1DC4D4EECD5) - ...Default__BP_AI_Euruska_MeatMan_C: Bad export index 1066192076/32.
+```
+
+**Verdict: not the Heavy Rifle Rebalance fix.** The crashing asset is the Euruska **"Meatman" AI
+boss blueprint** — an enemy, not a weapon. Three independent proofs:
+
+1. **Cryptographic — our mod ships zero MeatMan.** The crash log prints the package's runtime
+   FPackageId `0x7551B1DC4D4EECD5`. `CityHash64` of the lowercased UTF-16LE path
+   `/Game/FW/AI/Characters/Euruska/MeatMan/BP_AI_Euruska_MeatMan` reproduces it **exactly**. That id
+   (LE chunk id `d5ec4e4ddcb15175`) is in **neither** shipped pak — `retoc list` of `152` (12 pkgs)
+   + `191` (18 pkgs) = 30 packages, none is MeatMan. Cross-check: the 5 `DA_WPN_HRF0x_v2` path
+   hashes land exactly in `152`, and the dropped `BP_WPN_HRF05` (`e1441b0413b25fd5`) is correctly
+   absent. (`scratchpad/meatman_check.py`, reuses the AllWeaponsUnlockableFix CityHash64 port.)
+2. **Base health.** Vanilla `BP_AI_Euruska_MeatMan` deserializes **clean** on 0.9.3.9.2 (CUE4Parse
+   full mount, `ok=1 fail=0`, 32 exports) → the base asset isn't broken; the crash requires a
+   **stale cooked override** of it loaded from some *other* pak.
+3. **JSON side ships no cooked assets** (weapon/item/recipe text rows only).
+
+**Actual cause (well-sourced):** a known TFW stale-cooked-asset crash, documented on **unrelated**
+mod pages (Map Mode Selector [#61 posts](https://www.nexusmods.com/theforeverwinter/mods/61?tab=posts))
+with the same string + the dev's `G:\FW-staging` build path in the log. `Bad export index
+1066192076/32` = a serialized reference reading a garbage index into a 32-export table — the UE5
+signature of a mod-shipped cooked asset / Blueprint-loader gone stale across a hotfix. The reporter's
+"5-second hub upgrades" is an **innards-cost UE4SS JSON mod** (Cheaper Innards Upgrades [#51]-class;
+edits `TimeToUpgrade` ticks + costs, no pak, no AI) → also can't cause it. Most likely: **leftover
+paks / BP-loader files from the old HRR *all-in-one*** (bundled CheatManager/DayNightSelector
+Blueprint mods) or another stale pak mod in the load order. Reporter's own crash predates the fix
+("same crash before and after") → the fix was never the cause.
+
+**Remedy relayed:** full clean reinstall of the whole stack vs 0.9.3.9.2 — Signature Bypass (redo
+every update) + UE4SS + TFWWorkbench + **all** pak mods, deleting leftovers first; if it persists,
+add non-HRF paks back one at a time to find the stale MeatMan, and post the full crash log + complete
+mod list. Fixed `152`/`191` are proven clean; no repo change needed.
+
+> **In plain terms:** A player's game crashed on startup and thought this mod broke it. It didn't.
+> The crash is about an *enemy* character (the "Meatman"), but this mod only changes guns — and we
+> checked every file in it: that enemy isn't in there at all. The real cause is a *different,
+> out-of-date mod file* left over from an earlier game update. To fix it: delete all your mods and
+> reinstall the current versions from scratch; if it still crashes, add them back one at a time until
+> the crash comes back — whichever mod you added last is the bad one.
+
+---
+
+## 2026-07-10 — Vykhlop (RFL29) damage not applying → added flattened `FC_RFL29_Damage` (v1.1)
+
+A [Nexus #123](https://www.nexusmods.com/theforeverwinter/mods/123) comment: *"the mod does not
+change the AT-43 and the Vykhlop, at least for me."* Datamined the damage pipeline.
+
+**Root cause (Vykhlop — confirmed):** a heavy rifle's real per-shot damage comes from its
+`FC_*_Damage` **curve**, not the DA `WeaponDamage` scalar. Proof: vanilla `FC_HRF01_Damage` ramps
+300→500; the mod flattens it to **780/780** and that's what HRF01 deals (its DA says 730 — cosmetic).
+The mod ships `FC_HRF01–04_Damage` but **never shipped `FC_RFL29_Damage`** (exists in vanilla, ramps
+175→350). So the Vykhlop's DA change (175→375) was ignored and it kept vanilla damage. The four HRF
+rifles work because their curve is overridden; the Vykhlop's never was.
+
+Corrected a v1.0 diagnosis error along the way: **`WeaponPartTunableDataAsset` is NOT nulled** in the
+mod's DAs — a full-mount decode shows HRF01 (works) and RFL29 both keep the tunable ref. "Nulled in
+every DA" was an isolated-mount null artifact. The tunable isn't the lever; the FC curve is.
+
+**Fix (v1.1):** extract the current base `FC_RFL29_Damage`, flatten both keyframes 175/350 → **375**
+(mirroring FC_HRF01–04), add it to the 152 pak. `tools/build_fix.sh` updated (H: paths + an FC_RFL29
+base-extract+patch step; sources the 12 keepers from `dist/` since the original mod pak is gitignored).
+
+**Verified (static):** 152 now **13 packages** (`retoc verify` ok); FC_RFL29 FPackageId binds; isolated
+decode `FC_RFL29_Damage` reads **[375, 375]**, all 12 keepers intact (FC_HRF01 still [780,780]; DAs
+730 / 36300 / 375). Loosefiles zip regenerated. Awaiting in-game test.
+
+**AT-43 (HRF05) — still open.** Unlike Vykhlop it has NO FC curve and NO tunable, so its damage should
+be the DA scalar (36300 — which the fix DOES set and bind correctly). No damage curve exists for the
+railgun; its damage lands in `BP_WPN_HRF05` / `BP_Projectile_HRF05` bytecode (not readable via property
+decode). So either AT-43 actually works (reporter may have conflated it with Vykhlop) or its damage is
+applied in the dropped-BP / projectile path. Needs the reporter's confirmation (measured damage vs the
+stat card) and/or Kismet disassembly.
+
+> **In plain terms:** A player said two guns — the AT-43 and the Vykhlop — weren't being changed by the
+> mod. For the Vykhlop we found the cause: a gun's real damage comes from a hidden "damage curve" file,
+> and the mod updated that curve for four of the rifles but skipped the Vykhlop's — so its damage stayed
+> at the original number. This update adds the missing curve, so the Vykhlop now hits for its intended
+> damage. The AT-43 works differently (it has no such curve) and is still being looked into.
+
+### Next (user)
+- [ ] In-game test on the current build: Vykhlop (RFL29) now does ~375/shot.
+- [ ] Confirm with the reporter whether AT-43 is really unchanged (measured), or was conflated with the Vykhlop.

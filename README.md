@@ -18,16 +18,28 @@ for special ammo and scopes. It is a **hybrid mod**:
 - **TFWWorkbench JSON DataTables** — runtime patches that register those weapons, parts,
   items and recipes into the game's core data tables.
 
+> **In plain terms:** This mod overhauls the game's heavy rifles — tweaking their stats and
+> adding new magazines, scopes, and crafting recipes for them. It comes in two pieces that work
+> together: some packaged game files and some extra data files that plug the new gear into the game.
+
 ## The problem
 
 The mod ships for game version **0.9.2**. On the current build (**0.9.3.9.2**, build 24097213)
 it no longer works. This repo diagnoses why and ships a fixed build.
+
+> **In plain terms:** The original mod was built for an older version of the game and stopped
+> working after an update. This project figures out what broke and gives you a version that
+> works on the current game.
 
 ## Dependencies (unchanged from upstream)
 
 - Signature Bypass (2025)
 - UE4SS `3.0.1-849`+
 - TFWWorkbench `0.1.2`+
+
+> **In plain terms:** This mod doesn't run on its own — you need these three helper tools
+> installed first, or it won't load. They're the same ones the original mod required, so if you
+> already had that working, you're already set.
 
 ## Layout
 
@@ -39,10 +51,18 @@ it no longer works. This repo diagnoses why and ships a fixed build.
 | `dist/` | **Built fixed mod** — tracked; ships the repaired loose-files package (fixed `152` + `191` paks + TFWWorkbench JSON). |
 | `WORKLOG.md` | Running log. |
 
+> **In plain terms:** This table just explains the project's folders for anyone poking around
+> the files. If you only want to play, the one folder that matters is `dist/` — that's the
+> finished, ready-to-install mod.
+
 ## Install (players)
 
 Grab [`dist/HeavyRifleRebalanceFix_Loosefiles/`](dist/HeavyRifleRebalanceFix_Loosefiles) and follow
 [`docs/fix-notes.md`](docs/fix-notes.md) (install paths, dependencies, test checklist).
+
+> **In plain terms:** To install it, grab the `HeavyRifleRebalanceFix_Loosefiles` folder and
+> follow the step-by-step notes linked above — they tell you where to put the files, what else
+> you need, and how to check it worked.
 
 ## Rebuilding the pak (dev setup)
 
@@ -64,8 +84,16 @@ re-fetched:
 Also needs Python 3 (with `py7zr` to unpack the `.7z`s) and the game at the path set in
 `build_fix.sh`.
 
+> **In plain terms:** You can skip this whole section if you just want to play — the mod is
+> already built and waiting in `dist/`. It only matters for people who want to rebuild the mod
+> from scratch, who need a few extra tools and files that aren't bundled here.
+
 ## Credit
 
 Original mod **Heavy Rifle Rebalance** by *Meganiikko* (Nexus #76). This repository is a community
 **compatibility fix** and redistributes a repaired build for players on the current game version.
 Redistribution here is on that basis; it remains subject to the original author's permission.
+
+> **In plain terms:** The original mod was made by Meganiikko; this is a community-made fix that
+> repackages it to run on the current game. It's shared on the understanding that it still
+> respects the original creator's permissions.
